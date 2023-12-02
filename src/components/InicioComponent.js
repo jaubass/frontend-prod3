@@ -6,7 +6,7 @@ import { styles } from '../styles/styles'; // Ajusta la ruta según tu estructur
 const InicioComponent = () => {
   // Datos de ejemplo para el FlatList
   const data = Array.from({ length: 50 }, (_, index) => ({ key: `${index}`, title: `Item ${index + 1}` }));
-
+  
   return (
     <View>
       {/* Zona del título superior */}
