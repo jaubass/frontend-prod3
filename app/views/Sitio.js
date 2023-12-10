@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { LogIn } from '../widgets/LogIn';
 import { Menu } from '../widgets/Menu';
 
 const styles = StyleSheet.create({
@@ -23,9 +22,9 @@ export class Sitio extends React.Component {
     render() {
         return (
             <View style={styles.contenedor}>
-                <LogIn msg="Apretar para Log In" />
-                <Text style={styles.titulo}>TÍTULO DEL SITIO</Text>
-                <Text style={styles.lugar}>DETALLE</Text>
+                <Menu navigation={this.props.navigation} />
+                <Text style={styles.titulo}>Code 067</Text>
+                <Text style={styles.lugar}>MI VIAJE</Text>
             </View>
         );
     }

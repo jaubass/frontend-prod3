@@ -18,13 +18,13 @@ const styles = StyleSheet.create({
     },
 });
 
-export class Home extends React.Component {
+export class Detalle extends React.Component {
     render() {
         return (
             <View style={styles.contenedor}>
                 <Menu navigation={this.props.navigation} />
                 <Text style={styles.titulo}>Code 067</Text>
-                <Text style={styles.lugar}>PAGINA INICIO</Text>
+                <Text style={styles.lugar}>PAGINA DETALLE</Text>
             </View>
         );
     }

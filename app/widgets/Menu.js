@@ -6,17 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const styles = StyleSheet.create({
     contenedor: {
-        flex: 1,
+        flex: 0.4,
         backgroundColor: '#353535',
-    },
-    filaDestacada: {
-        flex: 2,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: "#ffffff",
-        borderBottomWidth: 1,
-        backgroundColor: "#353535",
     },
     fila: {
         flex: 1,
@@ -27,10 +18,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#353535",
     },
     boton: {
-        width: '50%',
-        height: '50%',
+        width: '33%',
+        height: '45%',
         backgroundColor: "#353535",
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
     },
     textoBoton: {
@@ -54,26 +45,18 @@ export class Menu extends React.Component {
 
         return (
             <View style={styles.contenedor}>
-                <View style={styles.filaDestacada}>
+                <View style={styles.fila}>
                     <TouchableOpacity style={styles.boton}
                         onPress={()=>navigate('Sitio')}>
-                        <Text style={styles.textoBoton}>SITIO DESTACADX</Text>
+                        <Text style={styles.textoBoton}>INICIO</Text>
                     </TouchableOpacity>
-                </View>
-                <View style={styles.fila}>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO 2</Text>
+                    <TouchableOpacity style={styles.boton} 
+                        onPress={()=>navigate('Detalle')}>
+                        <Text style={styles.textoBoton}>DETALLE</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO 3</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.fila}>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO 4</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO 5</Text>
+                    <TouchableOpacity style={styles.boton} 
+                        onPress={()=>navigate('Video')}>
+                        <Text style={styles.textoBoton}>VIDEO</Text>
                     </TouchableOpacity>
                 </View>
             </View>
