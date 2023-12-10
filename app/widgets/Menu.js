@@ -32,6 +32,7 @@ export class Menu extends React.Component {
                 });
             })
             .then(() => {
+                days.sort((a, b) => a.value.numero_dia - b.value.numero_dia);
                 this.setState({ days, loading: false });
             })
     }
