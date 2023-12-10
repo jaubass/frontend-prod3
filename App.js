@@ -1,27 +1,11 @@
-import { Home } from './app/views/Home';
-
-// export default function App() {
-//   return (
-//     <Home />
-//   );
-// }
-
-import * as React from 'react';
-import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
+import { Home } from './app/views/Home';
 
 const Stack = createNativeStackNavigator();
 
-function App() {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -30,5 +14,3 @@ function App() {
     </NavigationContainer>
   );
 }
-
-export default App;
