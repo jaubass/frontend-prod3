@@ -1,14 +1,21 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { LogIn } from '../widgets/LogIn';
+import { Menu } from '../widgets/Menu';
+
+const styles = StyleSheet.create({
+    contenedor: {
+        flex: 1,
+    },
+});
 
 export class Home extends React.Component {
+    // M'HE QUEDAT EN EL VÍDEO 10
     render() {
         return (
-            <View>
+            <View style={styles.contenedor}>
                 <LogIn msg="Apretar para Log In" />
-                <Text>Elemento 1</Text>
-                <Text>Elemento 2</Text>
+                <Menu />
             </View>
         );
     }
