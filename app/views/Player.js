@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { LogIn } from '../widgets/LogIn';
 
 const styles = StyleSheet.create({
     contenedor: {
@@ -18,13 +17,17 @@ const styles = StyleSheet.create({
     },
 });
 
-export class Sitio extends React.Component {
+export class Player extends React.Component {
     render() {
         return (
-            <View style={styles.contenedor}>
-                <LogIn msg="Apretar para Log In" />
-                <Text style={styles.titulo}>TÍTULO DEL SITIO</Text>
-                <Text style={styles.lugar}>DETALLE</Text>
+            <View>
+                <Text>AQUÍ EL REPRODUCTOR</Text>
+                <Text>REPRODUCTOR</Text>
+                <Text>BOTÓN 1</Text>
+                <Text>BOTÓN 2</Text>
+                <Text>BOTÓN 3</Text>
+                <Text>BOTÓN 4</Text>
+                <Text>BOTÓN 5</Text>
             </View>
         );
     }

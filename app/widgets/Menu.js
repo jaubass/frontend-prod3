@@ -57,12 +57,13 @@ export class Menu extends React.Component {
                 <View style={styles.filaDestacada}>
                     <TouchableOpacity style={styles.boton}
                         onPress={()=>navigate('Sitio')}>
-                        <Text style={styles.textoBoton}>SITIO DESTACADX</Text>
+                        <Text style={styles.textoBoton}>SITIO DESTACADO</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.fila}>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO 2</Text>
+                    <TouchableOpacity style={styles.boton}
+                        onPress={()=>navigate('Detail', {numero_dia: 33})}>
+                        <Text style={styles.textoBoton}>DETAIL</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
                         <Text style={styles.textoBoton}>SITIO 3</Text>
