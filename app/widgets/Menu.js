@@ -1,83 +1,93 @@
 import React from 'react';
-import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Text, StyleSheet, Alert, TouchableOpacity, FlatList } from 'react-native';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../config/db';
 
+const days = [];
 
 const styles = StyleSheet.create({
-    contenedor: {
-        flex: 1,
-        backgroundColor: '#353535',
-    },
-    filaDestacada: {
-        flex: 2,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: "#ffffff",
-        borderBottomWidth: 1,
-        backgroundColor: "#353535",
-    },
-    fila: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderColor: "#ffffff",
-        borderBottomWidth: 1,
-        backgroundColor: "#353535",
-    },
-    boton: {
-        width: '50%',
-        height: '50%',
-        backgroundColor: "#353535",
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    textoBoton: {
-        color: "#ffffff",
-        fontSize: 18,
-    },
 });
 
 export class Menu extends React.Component {
+
+    state = {
+        days: [],
+        loading: true,
+    }
+
     constructor(props) {
         super(props);
     }
 
-    viewMsg = () => {
-        Alert.alert("Has apretado un botón");
+    viewMsg = (data) => {
+        console.log("Data: ", data);
+        Alert.alert("Has apretado un botón: " + data.item.value.ciudad);
     }
+
+    componentDidMount() {
+        getDocs(collection(db, "data"))
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    days.push({ key: doc.id, value: doc.data() });
+                });
+            })
+            .then(()=>{
+                this.setState({ days, loading: false });
+            })
+    }
+
+    renderItem = data =>
+        <View>
+            <TouchableOpacity onPress={() => this.viewMsg(data)}>
+                <Text>{data.item.value.numero_dia} {data.item.value.ciudad}</Text>
+            </TouchableOpacity>
+        </View>
 
     render() {
 
         const { navigate } = this.props.navigation;
 
-        return (
-            <View style={styles.contenedor}>
-                <View style={styles.filaDestacada}>
-                    <TouchableOpacity style={styles.boton}
-                        onPress={()=>navigate('Sitio')}>
-                        <Text style={styles.textoBoton}>SITIO DESTACADO</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.fila}>
-                    <TouchableOpacity style={styles.boton}
-                        onPress={()=>navigate('Detail', {numero_dia: 33})}>
-                        <Text style={styles.textoBoton}>DETAIL</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO 3</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.fila}>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO 4</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO 5</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        );
+        if (this.state.loading) {
+            return (<View><Text>Loading...</Text></View>);
+
+        } else {
+            return (
+                <View>
+                    <FlatList
+                        data={this.state.days}
+                        renderItem={item => this.renderItem(item)}
+                        keyExtractor={item => item.key}
+                    />
+                </View>);
+        }
+
+
+        // return (
+        //     <View style={styles.contenedor}>
+        //         <View style={styles.filaDestacada}>
+        //             <TouchableOpacity style={styles.boton}
+        //                 onPress={() => navigate('Sitio')}>
+        //                 <Text style={styles.textoBoton}>SITIO DESTACADO</Text>
+        //             </TouchableOpacity>
+        //         </View>
+        //         <View style={styles.fila}>
+        //             <TouchableOpacity style={styles.boton}
+        //                 onPress={() => navigate('Detail', { numero_dia: 33 })}>
+        //                 <Text style={styles.textoBoton}>DETAIL</Text>
+        //             </TouchableOpacity>
+        //             <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
+        //                 <Text style={styles.textoBoton}>SITIO 3</Text>
+        //             </TouchableOpacity>
+        //         </View>
+        //         <View style={styles.fila}>
+        //             <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
+        //                 <Text style={styles.textoBoton}>SITIO 4</Text>
+        //             </TouchableOpacity>
+        //             <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
+        //                 <Text style={styles.textoBoton}>SITIO 5</Text>
+        //             </TouchableOpacity>
+        //         </View>
+        //     </View>
+        // );
     }
 }
