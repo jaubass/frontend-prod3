@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
 });
 
 export class Home extends React.Component {
-    // M'HE QUEDAT EN EL VÍDEO 10
     render() {
         return (
             <View style={styles.contenedor}>
