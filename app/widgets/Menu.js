@@ -31,63 +31,43 @@ export class Menu extends React.Component {
                     days.push({ key: doc.id, value: doc.data() });
                 });
             })
-            .then(()=>{
+            .then(() => {
                 this.setState({ days, loading: false });
             })
     }
 
-    renderItem = data =>
-        <View>
-            <TouchableOpacity onPress={() => this.viewMsg(data)}>
-                <Text>{data.item.value.numero_dia} {data.item.value.ciudad}</Text>
-            </TouchableOpacity>
-        </View>
+    renderItem = data => {
+        const { navigate } = this.props.navigation;
+        return (
+            <View>
+                <TouchableOpacity
+                    onPress={() => navigate('Detail', { ...data.item.value })}
+                >
+                    <Text>{data.item.value.numero_dia} {data.item.value.ciudad}</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
 
     render() {
 
-        const { navigate } = this.props.navigation;
-
         if (this.state.loading) {
-            return (<View><Text>Loading...</Text></View>);
-
-        } else {
             return (
                 <View>
-                    <FlatList
-                        data={this.state.days}
-                        renderItem={item => this.renderItem(item)}
-                        keyExtractor={item => item.key}
-                    />
-                </View>);
+                    <Text>Cargando...</Text>
+                </View>
+            );
         }
 
+        return (
+            <View>
+                <FlatList
+                    data={this.state.days}
+                    renderItem={item => this.renderItem(item)}
+                    keyExtractor={item => item.key}
+                />
+            </View>
+        );
 
-        // return (
-        //     <View style={styles.contenedor}>
-        //         <View style={styles.filaDestacada}>
-        //             <TouchableOpacity style={styles.boton}
-        //                 onPress={() => navigate('Sitio')}>
-        //                 <Text style={styles.textoBoton}>SITIO DESTACADO</Text>
-        //             </TouchableOpacity>
-        //         </View>
-        //         <View style={styles.fila}>
-        //             <TouchableOpacity style={styles.boton}
-        //                 onPress={() => navigate('Detail', { numero_dia: 33 })}>
-        //                 <Text style={styles.textoBoton}>DETAIL</Text>
-        //             </TouchableOpacity>
-        //             <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-        //                 <Text style={styles.textoBoton}>SITIO 3</Text>
-        //             </TouchableOpacity>
-        //         </View>
-        //         <View style={styles.fila}>
-        //             <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-        //                 <Text style={styles.textoBoton}>SITIO 4</Text>
-        //             </TouchableOpacity>
-        //             <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-        //                 <Text style={styles.textoBoton}>SITIO 5</Text>
-        //             </TouchableOpacity>
-        //         </View>
-        //     </View>
-        // );
     }
 }

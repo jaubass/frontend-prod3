@@ -18,11 +18,21 @@ const styles = StyleSheet.create({
 });
 
 export class Player extends React.Component {
+
+    state = {
+        video_resumen: '',
+    }
+
+    componentDidMount() {
+        const { video_resumen } = this.props.route.params;
+        this.setState({ video_resumen });
+    }
+
     render() {
         return (
             <View>
                 <Text>AQUÍ EL REPRODUCTOR</Text>
-                <Text>REPRODUCTOR</Text>
+                <Text>He recibido esta string: {this.state.video_resumen}</Text>
                 <Text>BOTÓN 1</Text>
                 <Text>BOTÓN 2</Text>
                 <Text>BOTÓN 3</Text>
