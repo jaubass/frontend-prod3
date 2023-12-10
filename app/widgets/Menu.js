@@ -50,7 +50,7 @@ export class Menu extends React.Component {
             <View style={styles.contenedor}>
                 <View style={styles.filaDestacada}>
                     <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO DESTACADO</Text>
+                        <Text style={styles.textoBoton}>SITIO DESTACADOO</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.fila}>
