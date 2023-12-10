@@ -1,5 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 const styles = StyleSheet.create({
     contenedor: {
@@ -46,11 +49,15 @@ export class Menu extends React.Component {
     }
 
     render() {
+
+        const { navigate } = this.props.navigation;
+
         return (
             <View style={styles.contenedor}>
                 <View style={styles.filaDestacada}>
-                    <TouchableOpacity style={styles.boton} onPress={this.viewMsg}>
-                        <Text style={styles.textoBoton}>SITIO DESTACADOO</Text>
+                    <TouchableOpacity style={styles.boton}
+                        onPress={()=>navigate('Sitio')}>
+                        <Text style={styles.textoBoton}>SITIO DESTACADX</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.fila}>
