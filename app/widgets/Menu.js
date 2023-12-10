@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Alert, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Alert, TouchableOpacity, FlatList } from 'react-native';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../config/db';
-
-const styles = StyleSheet.create({
-});
+import { styles } from '../styles/styles';
 
 export class Menu extends React.Component {
 
@@ -40,11 +38,13 @@ export class Menu extends React.Component {
     renderItem = data => {
         const { navigate } = this.props.navigation;
         return (
-            <View>
+            <View style={styles.dayButton}>
                 <TouchableOpacity
                     onPress={() => navigate('Detail', { ...data.item.value })}
                 >
-                    <Text>{data.item.value.numero_dia} {data.item.value.ciudad}</Text>
+                    <Text style={styles.dayButtonText}>
+                        {data.item.value.numero_dia} {data.item.value.ciudad}
+                    </Text>
                 </TouchableOpacity>
             </View>
         );
@@ -54,14 +54,20 @@ export class Menu extends React.Component {
 
         if (this.state.loading) {
             return (
-                <View>
-                    <Text>Cargando...</Text>
+                <View style={styles.container}>
+                    <View style={styles.loader}>
+                        <Text>Cargando...</Text>
+                    </View>
                 </View>
             );
         }
 
         return (
-            <View>
+            <View style={styles.container}>
+                <View style={styles.pageTitle}>
+                    <Text style={styles.pageTitleText}>MI VIAJE</Text>
+                    <Text style={styles.pagesubtitleText}>Y alguna cosita más aquí</Text>
+                </View>
                 <FlatList
                     data={this.state.days}
                     renderItem={item => this.renderItem(item)}

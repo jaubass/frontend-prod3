@@ -1,8 +1,6 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-const styles = StyleSheet.create({
-});
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { styles } from '../styles/styles';
 
 export class Detail extends React.Component {
     constructor(props) {
@@ -23,27 +21,40 @@ export class Detail extends React.Component {
         const { navigate } = this.props.navigation;
 
         return (
-            <View>
-                {/* <Text>id {day.id}</Text> */}
-                <Text>numero_dia {day.numero_dia}</Text>
-                <Text>ciudad {day.ciudad}</Text>
-                <Text>alojamiento {day.alojamiento}</Text>
-                <Text>descripcion {day.descripcion}</Text>
-                <Text>valoracion {day.valoracion}</Text>
-                <View>
+            <View style={styles.container}>
+                <View style={styles.detailLine}>
+                    <Text>numero_dia {day.numero_dia}</Text>
+                </View>
+                <View style={styles.detailLine}>
+                    <Text>ciudad {day.ciudad}</Text>
+                </View>
+                <View style={styles.detailLine}>
+                    <Text>alojamiento {day.alojamiento}</Text>
+                </View>
+                <View style={styles.detailLine}>
+                    <Text>descripcion {day.descripcion}</Text>
+                </View>
+                <View style={styles.detailLine}>
+                    <Text>valoracion {day.valoracion}</Text>
+                </View>
+                <View style={styles.detailLine}>
                     <Text>Actividades</Text>
                     <FlatList
                         data={day.actividades}
                         renderItem={this.renderActivity}
-                        keyExtractor={item=>item}
+                        keyExtractor={item => item}
                     />
                 </View>
-                <TouchableOpacity
-                    onPress={()=>navigate('Player', {video_resumen: day.video_resumen})}
-                >
-                    <Text>video_resumen {day.video_resumen}</Text>
-                </TouchableOpacity>
-                <Text>imagen {day.imagen} esto es nuevo, quizá no haga falta</Text>
+                <View style={styles.videoBtn}>
+                    <TouchableOpacity
+                        onPress={() => navigate('Player', { video_resumen: day.video_resumen })}
+                    >
+                        <Text>video_resumen {day.video_resumen}</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.detailLine}>
+                    <Text>imagen {day.imagen} esto es nuevo, quizá no haga falta</Text>
+                </View>
                 {/* <Text>{state.}</Text>
                 <Text>{state.}</Text>
                 <Text>{state.}</Text>

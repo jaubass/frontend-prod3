@@ -1,12 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Menu } from '../widgets/Menu';
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-});
+import { styles } from '../styles/styles';
 
 export class Home extends React.Component {
     render() {
