@@ -3,8 +3,6 @@ import { View, Text, StyleSheet, Alert, TouchableOpacity, FlatList } from 'react
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../config/db';
 
-const days = [];
-
 const styles = StyleSheet.create({
 });
 
@@ -19,12 +17,13 @@ export class Menu extends React.Component {
         super(props);
     }
 
-    viewMsg = (data) => {
-        console.log("Data: ", data);
-        Alert.alert("Has apretado un botón: " + data.item.value.ciudad);
-    }
+    // viewMsg = (data) => {
+    //     console.log("Data: ", data);
+    //     Alert.alert("Has apretado un botón: " + data.item.value.ciudad);
+    // }
 
     componentDidMount() {
+        const days = [];  // Variable provisional para los días. Acabará en state
         const coll = collection(db, "data");
         const q = query(coll, orderBy("numero_dia"));
         getDocs(q)
