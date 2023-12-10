@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Alert, TouchableOpacity, FlatList } from 'react-native';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../config/db';
 
 const days = [];
@@ -25,14 +25,15 @@ export class Menu extends React.Component {
     }
 
     componentDidMount() {
-        getDocs(collection(db, "data"))
+        const coll = collection(db, "data");
+        const q = query(coll, orderBy("numero_dia"));
+        getDocs(q)
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     days.push({ key: doc.id, value: doc.data() });
                 });
             })
             .then(() => {
-                days.sort((a, b) => a.value.numero_dia - b.value.numero_dia);
                 this.setState({ days, loading: false });
             })
     }
