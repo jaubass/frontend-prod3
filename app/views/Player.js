@@ -27,31 +27,6 @@ export class Player extends React.Component {
             })
     }
 
-    // VideoBox = () => {
-    //     return (
-    //         <View style={styles.videoBox}>
-    //             <Text>VIDEOBOX, aquí la url: {this.state.videoPath}</Text>
-    //             {/* <Image
-    //                 source={{
-    //                     uri: this.state.videoPath,
-    //                     method: 'GET'
-    //                  }}
-    //                 style={styles.video}
-    //             /> */}
-    //             <Video
-    //                 // source={{ uri: this.state.videoPath }}
-    //                 source={{ url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" }}
-
-    //                 // ref={(ref) => { this.player = ref }}
-    //                 controls={true}
-    //                 // onBuffer={this.onBuffer}                // Callback when remote video is buffering
-    //                 // onError={this.videoError}               // Callback when video cannot be loaded
-    //                 style={styles.video}
-    //             />
-    //         </View>
-    //     );
-    // }
-
     render() {
 
         if (this.state.videoPath === '') {
@@ -71,13 +46,8 @@ export class Player extends React.Component {
                 <Text>He recibido esta string: {this.state.video_resumen}</Text>
                 <View style={styles.videoBox}>
                     <Text>VIDEOBOX, aquí la url: {this.state.videoPath}</Text>
-                    {/* <Video
-                        source={{ uri: this.state.videoPath }}
-                        controls={true}
-                        style={styles.video}
-                    /> */}
                     <Video
-                        // ref={this.video}
+                        // ref={this.video}  TODO: This is needed... probably
                         style={styles.video}
                         source={{ uri: this.state.videoPath }}
                         useNativeControls
