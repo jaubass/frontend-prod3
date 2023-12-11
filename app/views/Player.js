@@ -37,6 +37,7 @@ export class Player extends React.Component {
                     this.setState({ status: 'ready' });
                 })
                 .catch(error => {
+                    console.log(error);
                     this.setState({ status: 'no-video' });
                 });
 
