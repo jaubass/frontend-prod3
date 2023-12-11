@@ -64,10 +64,6 @@ export class Menu extends React.Component {
 
         return (
             <View style={styles.container}>
-                <View style={styles.pageTitle}>
-                    <Text style={styles.pageTitleText}>MI VIAJE</Text>
-                    <Text style={styles.pagesubtitleText}>Y alguna cosita más aquí</Text>
-                </View>
                 <FlatList
                     data={this.state.days}
                     renderItem={item => this.renderItem(item)}

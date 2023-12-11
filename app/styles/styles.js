@@ -11,13 +11,17 @@ export const styles = StyleSheet.create({
         backgroundColor: "#fff"
     },
     pageTitle: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#eee',
+        paddingTop: 50,
+        paddingBottom: 50,
     },
     pageTitleText: {
         fontSize: 30,
+    },
+    menu: {
+        // flex: 5,
     },
     pagesubtitleText: {
         fontSize: 20,
