@@ -56,6 +56,16 @@ export const styles = StyleSheet.create({
         color: "#FFFFFF",
         fontSize: 20,
     },
+    topMenuTitle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#262626',
+        padding: 10,
+    },
+    topMenuTitleText: {
+        color: "#FFFFFF",
+        fontSize: 20,
+    },
     detailLine: {
     },
     videoBox: {

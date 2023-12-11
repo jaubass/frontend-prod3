@@ -66,7 +66,9 @@ export default class TopMenu extends React.Component {
                     </TouchableOpacity>
                 </View>
             </View>
-            <Text style={styles.pageTitleText}>{this.state.title}</Text>
+            <View style={styles.topMenuTitle}>
+                <Text style={styles.topMenuTitleText}>{this.state.title}</Text>
+            </View>
             </View>
         );
     }

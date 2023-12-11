@@ -25,7 +25,7 @@ export class Detail extends React.Component {
             <View style={styles.container}>
                 <TopMenu navigation={this.props.navigation}
                     video_resumen={day.video_resumen}
-                    title={day.ciudad}
+                    title={`Día ${day.numero_dia}. ${day.ciudad}`}
                 />
                 <View style={styles.detailLine}>
                     <Text>numero_dia {day.numero_dia}</Text>
