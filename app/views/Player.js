@@ -51,14 +51,12 @@ export class Player extends React.Component {
 
     handleVideo = status => {
         if (this.playbackObject) {
-            console.log("Status: ", status);
             this.playbackObject.setStatusAsync(status);
         }
     }
 
     handleFullScreen = () => {
         if (this.playbackObject) {
-            console.log("FullScreen");
             this.playbackObject.presentFullscreenPlayer();
         }
     }
