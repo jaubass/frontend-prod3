@@ -43,14 +43,14 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#262626',
-        padding: 5,
+        marginTop: 30,
     },
     topMenuItem: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#262626',
-        padding: 15,
+        padding: 20,
     },
     topMenuItemText: {
         color: "#FFFFFF",
@@ -71,4 +71,13 @@ export const styles = StyleSheet.create({
         height: 240,
         backgroundColor: '#FFCCCC',
     },
+    playerButtonsBox: {
+        flexDirection: 'row',
+        backgroundColor: '#262626',
+    },
+    playerButton: {
+        flex: 1,
+        fontSize: 20,
+        padding: 20,
+    }
 });

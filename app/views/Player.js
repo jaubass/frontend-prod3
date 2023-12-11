@@ -1,7 +1,8 @@
 import React from 'react';
-import { ActivityIndicator, Text, View } from 'react-native';
+import { ActivityIndicator, Text, View, TouchableOpacity } from 'react-native';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { Video, ResizeMode } from 'expo-av';
+import { Icon } from '@rneui/themed';
 
 import TopMenu from '../widgets/TopMenu';
 import { styles } from '../styles/styles';
@@ -12,10 +13,11 @@ export class Player extends React.Component {
         video_resumen: '',
         videoPath: '',
     };
+    playbackObject = null;
 
     constructor(props) {
         super(props);
-        this.videoRef = React.createRef();
+        // this.videoRef = React.createRef();
     }
 
     componentDidMount() {
@@ -30,6 +32,28 @@ export class Player extends React.Component {
                 .then(url => {
                     this.setState({ videoPath: url });
                 })
+        }
+    }
+
+    handleVideoRef = component => {
+        this.playbackObject = component;
+        // if (this.playbackObject) {
+        //     const status = this.playbackObject.getStatusAsync();
+        //     console.log("Status: ", status);
+        // }
+    }
+
+    handleVideo = status => {
+        if (this.playbackObject) {
+            console.log("Status: ", status);
+            this.playbackObject.setStatusAsync(status);
+        }
+    }
+
+    handleFullScreen = () => {
+        if (this.playbackObject) {
+            console.log("FullScreen");
+            this.playbackObject.presentFullscreenPlayer();
         }
     }
 
@@ -56,18 +80,45 @@ export class Player extends React.Component {
                 <View style={styles.videoBox}>
                     <Text>VIDEOBOX, aquí la url: {this.state.videoPath}</Text>
                     <Video
-                        ref={this.videoRef}
+                        ref={this.handleVideoRef}
                         style={styles.video}
                         source={{ uri: this.state.videoPath }}
-                        useNativeControls
+                        useNativeControls={false}
                         resizeMode={ResizeMode.CONTAIN}
                     />
                 </View>
-                <Text>BOTÓN 1</Text>
-                <Text>BOTÓN 2</Text>
-                <Text>BOTÓN 3</Text>
-                <Text>BOTÓN 4</Text>
-                <Text>BOTÓN 5</Text>
+                <View style={styles.playerButtonsBox}>
+                    <View style={styles.playerButton}>
+                        <TouchableOpacity onPress={() => this.handleVideo({shouldPlay: true})}>
+                            <Icon name="play-circle-fill" color="white" size={30} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.playerButton}>
+                        <TouchableOpacity onPress={() => this.handleVideo({shouldPlay: false})}>
+                            <Icon name="pause-circle-filled" color="white" size={30} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.playerButton}>
+                        <TouchableOpacity onPress={() => this.handleVideo({isMuted: true})}>
+                            <Icon name="volume-off" color="white" size={30} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.playerButton}>
+                        <TouchableOpacity onPress={() => this.handleVideo({isMuted: false})}>
+                            <Icon name="volume-up" color="white" size={30} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.playerButton}>
+                        <TouchableOpacity onPress={() => this.handleVideo({positionMillis: 0})}>
+                            <Icon name="loop" color="white" size={30} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.playerButton}>
+                        <TouchableOpacity onPress={() => this.handleFullScreen()}>
+                            <Icon name="fullscreen" color="white" size={30} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
         );
     }
