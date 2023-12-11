@@ -11,8 +11,7 @@ export class Home extends React.Component {
                     <Text style={styles.pagesubtitleText}>Code 067</Text>
                     <Text style={styles.pageTitleText}>MI VIAJE</Text>
                 </View>
-                <Menu style={styles.menu}
-                navigation={this.props.navigation} />
+                <Menu navigation={this.props.navigation} />
             </View>
         );
     }

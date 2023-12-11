@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+
+
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -8,20 +10,17 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fff"
+        backgroundColor: "#e0e0e0"
     },
     pageTitle: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#eee',
+        backgroundColor: '#a0a0a0',
         paddingTop: 50,
         paddingBottom: 50,
     },
     pageTitleText: {
         fontSize: 30,
-    },
-    menu: {
-        // flex: 5,
     },
     pagesubtitleText: {
         fontSize: 20,
@@ -35,7 +34,7 @@ export const styles = StyleSheet.create({
     },
     dayButtonText: {
         fontSize: 20,
-        color: '#FFFFFF',
+        color: '#e0e0e0',
     },
     topMenuBox: {
         flexDirection: 'row',
@@ -52,7 +51,7 @@ export const styles = StyleSheet.create({
         padding: 20,
     },
     topMenuItemText: {
-        color: "#FFFFFF",
+        color: "#e0e0e0",
         fontSize: 20,
     },
     topMenuTitle: {
@@ -62,11 +61,10 @@ export const styles = StyleSheet.create({
         padding: 10,
     },
     topMenuTitleText: {
-        color: "#FFFFFF",
+        color: "#e0e0e0",
         fontSize: 20,
     },
     bodyDetail: {
-        // marginTop: 24,
         padding: 12,
     },
     detailLine: {
