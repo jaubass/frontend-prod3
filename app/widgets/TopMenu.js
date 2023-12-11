@@ -1,10 +1,25 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 
 import { styles } from '../styles/styles';
 import { Icon } from '@rneui/themed';
 
 export default class TopMenu extends React.Component {
+
+    state = {
+        title: '',
+    };
+
+    constructor(props) {
+        super(props);
+    }
+
+
+    componentDidMount() {
+        const { title } = this.props;
+        this.setState({ title });
+    }
+
     render() {
         const { navigate, goBack } = this.props.navigation;
         const video_resumen = this.props.video_resumen;
@@ -13,7 +28,7 @@ export default class TopMenu extends React.Component {
         const centerButtonVideo = (
             <View style={styles.topMenuItem}>
                 <TouchableOpacity
-                    onPress={() => navigate('Player', { video_resumen })}
+                    onPress={() => navigate('Player', { video_resumen, title: this.state.title })}
                 >
                     <Icon name="videocam" color="white" />
                 </TouchableOpacity>
@@ -28,10 +43,16 @@ export default class TopMenu extends React.Component {
         );
 
         // Decidimos qué botón central mostrar
-        const centerButton = video_resumen ?
-            centerButtonVideo : centerButtonDetail;
+        // Tres opciones: Botón del vídeo, botón del detalle o nada (si estamos
+        // en el detalle y no hay vídeo)
+        const centerButton = video_resumen === "GOBACK" ?
+            centerButtonDetail :
+            video_resumen ?
+                centerButtonVideo :
+                null;
 
         return (
+            <View>
             <View style={styles.topMenuBox}>
                 <View style={styles.topMenuItem}>
                     <TouchableOpacity onPress={() => goBack()}>
@@ -44,6 +65,8 @@ export default class TopMenu extends React.Component {
                         <Icon name="home" color="white" />
                     </TouchableOpacity>
                 </View>
+            </View>
+            <Text style={styles.pageTitleText}>{this.state.title}</Text>
             </View>
         );
     }

@@ -12,19 +12,20 @@ export class Player extends React.Component {
     state = {
         video_resumen: '',
         videoPath: '',
+        status: 'loading',
+        title: '',
     };
     playbackObject = null;
 
     constructor(props) {
         super(props);
-        // this.videoRef = React.createRef();
     }
 
     componentDidMount() {
-        const { video_resumen } = this.props.route.params;
-        this.setState({ video_resumen });
+        const { video_resumen, title } = this.props.route.params;
+        this.setState({ video_resumen, title });
 
-        if (video_resumen !== '') {
+        if (video_resumen && video_resumen !== 'GOBACK') {
             // Obtenemos de firebase la URL completa del vídeo
             const storage = getStorage();
             const storageRef = ref(storage, video_resumen);
@@ -32,15 +33,20 @@ export class Player extends React.Component {
                 .then(url => {
                     this.setState({ videoPath: url });
                 })
+                .then(() => {
+                    this.setState({ status: 'ready' });
+                })
+                .catch(error => {
+                    this.setState({ status: 'no-video' });
+                });
+
+        } else {
+            this.setState({ status: 'no-video' });
         }
     }
 
     handleVideoRef = component => {
         this.playbackObject = component;
-        // if (this.playbackObject) {
-        //     const status = this.playbackObject.getStatusAsync();
-        //     console.log("Status: ", status);
-        // }
     }
 
     handleVideo = status => {
@@ -59,7 +65,7 @@ export class Player extends React.Component {
 
     render() {
 
-        if (this.state.videoPath === '') {
+        if (this.state.status === 'loading') {
             return (
                 <View style={styles.container}>
                     <View style={styles.loader}>
@@ -70,15 +76,29 @@ export class Player extends React.Component {
             );
         }
 
+        if (this.state.status === 'no-video') {
+            return (
+                <View style={styles.container}>
+                    <TopMenu navigation={this.props.navigation}
+                        video_resumen='GOBACK'
+                        title={this.state.title}
+                    />
+                    <View style={styles.loader}>
+                        <Text style={styles.notFoundText}>
+                            No se ha encontrado el vídeo.
+                        </Text>
+                    </View>
+                </View>
+            );
+        }
+
         return (
             <View style={styles.container}>
                 <TopMenu navigation={this.props.navigation}
-                    video_resumen={null}
+                    video_resumen='GOBACK'
+                    title={this.state.title}
                 />
-                <Text>AQUÍ EL REPRODUCTOR</Text>
-                <Text>He recibido esta string: {this.state.video_resumen}</Text>
                 <View style={styles.videoBox}>
-                    <Text>VIDEOBOX, aquí la url: {this.state.videoPath}</Text>
                     <Video
                         ref={this.handleVideoRef}
                         style={styles.video}

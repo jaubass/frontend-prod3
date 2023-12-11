@@ -25,6 +25,7 @@ export class Detail extends React.Component {
             <View style={styles.container}>
                 <TopMenu navigation={this.props.navigation}
                     video_resumen={day.video_resumen}
+                    title={day.ciudad}
                 />
                 <View style={styles.detailLine}>
                     <Text>numero_dia {day.numero_dia}</Text>
@@ -49,21 +50,16 @@ export class Detail extends React.Component {
                         keyExtractor={item => item}
                     />
                 </View>
-                <View style={styles.videoBtn}>
+                {/* <View style={styles.videoBtn}>
                     <TouchableOpacity
                         onPress={() => navigate('Player', { video_resumen: day.video_resumen })}
                     >
                         <Text>video_resumen {day.video_resumen}</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
                 <View style={styles.detailLine}>
                     <Text>imagen {day.imagen} esto es nuevo, quizá no haga falta</Text>
                 </View>
-                {/* <Text>{state.}</Text>
-                <Text>{state.}</Text>
-                <Text>{state.}</Text>
-                <Text>{state.}</Text>
-                <Text>{state.}</Text> */}
             </View>
         );
     }

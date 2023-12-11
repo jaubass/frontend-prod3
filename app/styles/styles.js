@@ -58,18 +58,15 @@ export const styles = StyleSheet.create({
     },
     detailLine: {
     },
-    videoBtn: {
-        backgroundColor: '#ccc',
-    },
     videoBox: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#CCCCFF',
+        backgroundColor: '#262626',
     },
     video: {
         width: 400,
         height: 240,
-        backgroundColor: '#FFCCCC',
+        backgroundColor: '#262626',
     },
     playerButtonsBox: {
         flexDirection: 'row',
@@ -79,5 +76,8 @@ export const styles = StyleSheet.create({
         flex: 1,
         fontSize: 20,
         padding: 20,
-    }
+    },
+    notFoundText: {
+        fontSize: 20,
+    },
 });
