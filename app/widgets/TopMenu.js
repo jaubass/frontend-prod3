@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
+import { Icon } from '@rneui/themed';
 
 import { styles } from '../styles/styles';
-import { Icon } from '@rneui/themed';
 
 export default class TopMenu extends React.Component {
 
