@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { Video, ResizeMode } from 'expo-av';
 
@@ -38,7 +38,7 @@ export class Player extends React.Component {
             return (
                 <View style={styles.container}>
                     <View style={styles.loader}>
-                        <Text>Cargando...</Text>
+                        <ActivityIndicator size="large" />
                     </View>
 
                 </View>

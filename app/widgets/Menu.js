@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Alert, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Alert, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../config/db';
 import { styles } from '../styles/styles';
@@ -56,7 +56,7 @@ export class Menu extends React.Component {
             return (
                 <View style={styles.container}>
                     <View style={styles.loader}>
-                        <Text>Cargando...</Text>
+                        <ActivityIndicator size="large" />
                     </View>
                 </View>
             );
