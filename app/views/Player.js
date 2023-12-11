@@ -7,24 +7,29 @@ import { styles } from '../styles/styles';
 
 export class Player extends React.Component {
 
-    // video = React.useRef(null);
     state = {
         video_resumen: '',
         videoPath: '',
     };
 
+    constructor(props) {
+        super(props);
+        this.videoRef = React.createRef();
+    }
+
     componentDidMount() {
         const { video_resumen } = this.props.route.params;
         this.setState({ video_resumen });
 
-        // Obtenemos de firebase la URL completa del vídeo
-        const storage = getStorage();
-        const storageRef = ref(storage, video_resumen);
-        getDownloadURL(storageRef)
-            .then(url => {
-                console.log("URL: ", url);
-                this.setState({ videoPath: url });
-            })
+        if (video_resumen !== '') {
+            // Obtenemos de firebase la URL completa del vídeo
+            const storage = getStorage();
+            const storageRef = ref(storage, video_resumen);
+            getDownloadURL(storageRef)
+                .then(url => {
+                    this.setState({ videoPath: url });
+                })
+        }
     }
 
     render() {
@@ -47,7 +52,7 @@ export class Player extends React.Component {
                 <View style={styles.videoBox}>
                     <Text>VIDEOBOX, aquí la url: {this.state.videoPath}</Text>
                     <Video
-                        // ref={this.video}  TODO: This is needed... probably
+                        ref={this.videoRef}
                         style={styles.video}
                         source={{ uri: this.state.videoPath }}
                         useNativeControls
