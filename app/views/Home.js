@@ -8,8 +8,8 @@ export class Home extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.pageTitle}>
+                    <Text style={styles.pagesubtitleText}>Code 067</Text>
                     <Text style={styles.pageTitleText}>MI VIAJE</Text>
-                    <Text style={styles.pagesubtitleText}>Y alguna cosita más aquí</Text>
                 </View>
                 <Menu style={styles.menu}
                 navigation={this.props.navigation} />
