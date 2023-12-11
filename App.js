@@ -14,13 +14,13 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Home" component={Home}
-          options={{title:"Mi viaje"}}
+          options={{headerShown: false}}
         />
         <Stack.Screen name="Detail" component={Detail}
-          options={{title:"Detalle del día"}}
+          options={{headerShown: false}}
         />
         <Stack.Screen name="Player" component={Player}
-          options={{title:"Vídeo resumen"}}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
