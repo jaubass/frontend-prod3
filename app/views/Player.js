@@ -3,6 +3,7 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { Video, ResizeMode } from 'expo-av';
 
+import TopMenu from '../widgets/TopMenu';
 import { styles } from '../styles/styles';
 
 export class Player extends React.Component {
@@ -47,6 +48,9 @@ export class Player extends React.Component {
 
         return (
             <View style={styles.container}>
+                <TopMenu navigation={this.props.navigation}
+                    video_resumen={null}
+                />
                 <Text>AQUÍ EL REPRODUCTOR</Text>
                 <Text>He recibido esta string: {this.state.video_resumen}</Text>
                 <View style={styles.videoBox}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from '../styles/styles';
+import TopMenu from '../widgets/TopMenu';
 
 export class Detail extends React.Component {
     constructor(props) {
@@ -22,6 +23,9 @@ export class Detail extends React.Component {
 
         return (
             <View style={styles.container}>
+                <TopMenu navigation={this.props.navigation}
+                    video_resumen={day.video_resumen}
+                />
                 <View style={styles.detailLine}>
                     <Text>numero_dia {day.numero_dia}</Text>
                 </View>

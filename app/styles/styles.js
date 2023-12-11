@@ -34,6 +34,24 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         color: '#123456',
     },
+    topMenuBox: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#262626',
+        padding: 5,
+    },
+    topMenuItem: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#262626',
+        padding: 15,
+    },
+    topMenuItemText: {
+        color: "#FFFFFF",
+        fontSize: 20,
+    },
     detailLine: {
     },
     videoBtn: {
