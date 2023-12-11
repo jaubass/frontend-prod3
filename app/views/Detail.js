@@ -10,8 +10,8 @@ export class Detail extends React.Component {
 
     renderActivity = data => {
         return (
-            <View>
-                <Text>{data.item}</Text>
+            <View style={styles.activity}>
+                <Text style={styles.activityText}>• {data.item}</Text>
             </View>
         );
     }
@@ -27,39 +27,31 @@ export class Detail extends React.Component {
                     video_resumen={day.video_resumen}
                     title={`Día ${day.numero_dia}. ${day.ciudad}`}
                 />
-                <View style={styles.detailLine}>
-                    <Text>numero_dia {day.numero_dia}</Text>
+                <View style={styles.bodyDetail}>
+                    <View style={styles.detailLine}>
+                        <Text style={styles.lineKey}>Alojamiento</Text>
+                        <Text style={styles.lineValue}>{day.alojamiento}</Text>
+                    </View>
+                    <View style={styles.detailLine}>
+                        <Text style={styles.lineKey}>Descripcion</Text>
+                        <Text style={styles.lineValue}>{day.descripcion}</Text>
+                    </View>
+                    <View style={styles.detailLine}>
+                        <Text style={styles.lineKey}>Valoracion</Text>
+                        <Text style={styles.lineValue}>{day.valoracion}</Text>
+                    </View>
+                    <View style={styles.detailBlock}>
+                        <Text style={styles.detailBlockKey}>Actividades</Text>
+                        <FlatList
+                            data={day.actividades}
+                            renderItem={this.renderActivity}
+                            keyExtractor={item => item}
+                        />
+                    </View>
                 </View>
-                <View style={styles.detailLine}>
-                    <Text>ciudad {day.ciudad}</Text>
-                </View>
-                <View style={styles.detailLine}>
-                    <Text>alojamiento {day.alojamiento}</Text>
-                </View>
-                <View style={styles.detailLine}>
-                    <Text>descripcion {day.descripcion}</Text>
-                </View>
-                <View style={styles.detailLine}>
-                    <Text>valoracion {day.valoracion}</Text>
-                </View>
-                <View style={styles.detailLine}>
-                    <Text>Actividades</Text>
-                    <FlatList
-                        data={day.actividades}
-                        renderItem={this.renderActivity}
-                        keyExtractor={item => item}
-                    />
-                </View>
-                {/* <View style={styles.videoBtn}>
-                    <TouchableOpacity
-                        onPress={() => navigate('Player', { video_resumen: day.video_resumen })}
-                    >
-                        <Text>video_resumen {day.video_resumen}</Text>
-                    </TouchableOpacity>
-                </View> */}
-                <View style={styles.detailLine}>
+                {/* <View style={styles.detailLine}>
                     <Text>imagen {day.imagen} esto es nuevo, quizá no haga falta</Text>
-                </View>
+                </View> */}
             </View>
         );
     }

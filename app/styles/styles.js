@@ -29,14 +29,13 @@ export const styles = StyleSheet.create({
     dayButton: {
         flex: 1,
         margin: 1,
-        padding: 5,
-        backgroundColor: '#ccc',
-        borderRadius: 5,
+        padding: 10,
+        backgroundColor: '#262626',
         justifyContent: 'center',
     },
     dayButtonText: {
         fontSize: 20,
-        color: '#123456',
+        color: '#FFFFFF',
     },
     topMenuBox: {
         flexDirection: 'row',
@@ -66,7 +65,37 @@ export const styles = StyleSheet.create({
         color: "#FFFFFF",
         fontSize: 20,
     },
+    bodyDetail: {
+        // marginTop: 24,
+        padding: 12,
+    },
     detailLine: {
+        flexDirection: 'row',
+        gap: 10,
+        paddingTop: 6,
+    },
+    lineKey: {
+        flex: 1,
+        fontWeight: 'bold',
+        fontSize: 18,
+    },
+    lineValue: {
+        flex: 2,
+        fontSize: 18,
+    },
+    detailBlock:{
+        paddingTop: 6,
+
+    },
+    detailBlockKey:{
+        fontWeight: 'bold',
+        fontSize: 18,
+    },
+    activity: {
+        padding: 6,
+    },
+    activityText: {
+        fontSize: 18,
     },
     videoBox: {
         justifyContent: 'center',
