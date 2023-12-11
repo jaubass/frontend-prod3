@@ -43,8 +43,10 @@ export default class TopMenu extends React.Component {
         );
 
         // Decidimos qué botón central mostrar
-        // Tres opciones: Botón del vídeo, botón del detalle o nada (si estamos
-        // en el detalle y no hay vídeo)
+        // Tres opciones:
+        // 1. Botón del vídeo,
+        // 2. botón del detalle o
+        // 3. nada (si ya estamos en el detalle y no hay vídeo)
         const centerButton = video_resumen === "GOBACK" ?
             centerButtonDetail :
             video_resumen ?
