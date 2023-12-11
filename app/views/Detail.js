@@ -1,9 +1,10 @@
 import React from 'react';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { styles } from '../styles/styles';
 import TopMenu from '../widgets/TopMenu';
 
 export class Detail extends React.Component {
+
     constructor(props) {
         super(props);
     }
@@ -19,7 +20,6 @@ export class Detail extends React.Component {
     render() {
 
         const day = this.props.route.params;
-        const { navigate } = this.props.navigation;
 
         return (
             <View style={styles.container}>
@@ -49,9 +49,6 @@ export class Detail extends React.Component {
                         />
                     </View>
                 </View>
-                {/* <View style={styles.detailLine}>
-                    <Text>imagen {day.imagen} esto es nuevo, quizá no haga falta</Text>
-                </View> */}
             </View>
         );
     }

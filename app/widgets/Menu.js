@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Alert, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../config/db';
 import { styles } from '../styles/styles';
@@ -15,12 +15,7 @@ export class Menu extends React.Component {
         super(props);
     }
 
-    // viewMsg = (data) => {
-    //     console.log("Data: ", data);
-    //     Alert.alert("Has apretado un botón: " + data.item.value.ciudad);
-    // }
-
-    componentDidMount() {
+    async componentDidMount() {
         const days = [];  // Variable provisional para los días. Acabará en state
         const coll = collection(db, "data");
         const q = query(coll, orderBy("numero_dia"));
