@@ -5,6 +5,7 @@ import { Video, ResizeMode } from 'expo-av';
 
 import TopMenu from '../widgets/TopMenu';
 import { styles } from '../styles/styles';
+import VideoPlayer from '../videoplayer/VideoPlayer';
 
 export class Player extends React.Component {
 
@@ -62,6 +63,34 @@ export class Player extends React.Component {
                         useNativeControls
                         resizeMode={ResizeMode.CONTAIN}
                     />
+                    {/* <VideoPlayer
+                        videoProps={{
+                            shouldPlay: false,
+                            resizeMode: ResizeMode.CONTAIN,
+                            source: {uri: this.state.videoPath},
+                        }}
+                        fullscreen={{
+                            inFullscreen: inFullscreen2,
+                            enterFullscreen: async () => {
+                              setStatusBarHidden(true, 'fade')
+                              setInFullsreen2(!inFullscreen2)
+                              await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT)
+                              refVideo2.current.setStatusAsync({
+                                shouldPlay: true,
+                              })
+                            },
+                            exitFullscreen: async () => {
+                              setStatusBarHidden(false, 'fade')
+                              setInFullsreen2(!inFullscreen2)
+                              await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.DEFAULT)
+                            },
+                          }}
+                          style={{
+                            videoBackgroundColor: 'black',
+                            height: inFullscreen2 ? Dimensions.get('window').width : 160,
+                            width: inFullscreen2 ? Dimensions.get('window').height : 320,
+                          }}
+                    /> */}
                 </View>
                 <Text>BOTÓN 1</Text>
                 <Text>BOTÓN 2</Text>
